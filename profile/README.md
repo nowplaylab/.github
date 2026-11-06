@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/nowplaylab/.github/main/profile/banner.png" alt="nowplaylab: old phones, old tablets, old TVs from the drawer" width="100%">
+<img src="https://raw.githubusercontent.com/nowplaylab/.github/main/profile/banner.webp" alt="nowplaylab: old tablets, old TVs, old phones from the drawer" width="100%">
 
 <p align="center">
 Делаем полезные экраны из старого железа, которое лежит в ящике.<br>
