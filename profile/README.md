@@ -16,4 +16,12 @@
 
 <br>
 
+**Поддержать** / Support<br>
+Всё здесь бесплатное и с открытым кодом. Если пригодилось, можно закинуть на развитие.<br>
+<sub>Everything here is free and open source. If it helped you, you can chip in.</sub>
+
+[DonationAlerts](https://www.donationalerts.com/r/tryshyzov) &nbsp;&nbsp; USDT, только сеть TRON (TRC20) / TRON network only: `TK787wDdmME8J6cpgLgqiaoV1EB6NK37hc` &nbsp;&nbsp; [QR](https://qr.crypt.bot/?url=TK787wDdmME8J6cpgLgqiaoV1EB6NK37hc)
+
+<br>
+
 <p align="center"><sub>Делают <a href="https://github.com/tryshyzov">tryshyzov</a> и Claude &nbsp;/&nbsp; Made by <a href="https://github.com/tryshyzov">tryshyzov</a> and Claude</sub></p>
