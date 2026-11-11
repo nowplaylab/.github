@@ -17,8 +17,8 @@ We turn old hardware from the drawer into useful screens.<br>
 <br>
 
 **Поддержать** / Support<br>
-Всё здесь бесплатное и с открытым кодом. Если пригодилось, можно закинуть на развитие.<br>
-<sub>Everything here is free and open source. If it helped you, you can chip in.</sub>
+here is free and open source. If it helped you, you can chip in.<br>
+<sub>Всё здесь бесплатное и с открытым кодом. Если пригодилось, можно закинуть на развитие.</sub>
 
 [DonationAlerts](https://www.donationalerts.com/r/tryshyzov) &nbsp;&nbsp; USDT, только сеть TRON (TRC20) / TRON network only: `TK787wDdmME8J6cpgLgqiaoV1EB6NK37hc` &nbsp;&nbsp; [QR](https://qr.crypt.bot/?url=TK787wDdmME8J6cpgLgqiaoV1EB6NK37hc)
 
