@@ -1,18 +1,18 @@
 <img src="https://raw.githubusercontent.com/nowplaylab/.github/main/profile/banner.webp" alt="nowplaylab: old tablets, old TVs, old phones from the drawer" width="100%">
 
 <p align="center">
-Делаем полезные экраны из старого железа, которое лежит в ящике.<br>
-<sub>We turn old hardware from the drawer into useful screens.</sub>
+We turn old hardware from the drawer into useful screens.<br>
+<sub>Делаем полезные экраны из старого железа, которое лежит в ящике.</sub>
 </p>
 
 <br>
 
 <a href="https://github.com/nowplaylab/nowplaying-display"><img src="https://raw.githubusercontent.com/nowplaylab/.github/main/profile/nowplaying.png" alt="NowPlaying" width="100%"></a>
 
-**[NowPlaying](https://github.com/nowplaylab/nowplaying-display)**. Старый Android-планшет или телевизор показывает, что играет на компьютере: обложку, исполнителя и текст песни, где горит строка, которую сейчас поют. Когда музыка на паузе, на экране часы, погода и виджеты.<br>
-<sub>An old Android tablet or TV shows what your PC is playing: the cover, the artist and the lyrics, with the line being sung lit up. When the music is paused, it shows the time, the weather and widgets.</sub>
+**[NowPlaying](https://github.com/nowplaylab/nowplaying-display)**. An old Android tablet or TV shows what your PC is playing: the cover, the artist and the lyrics, with the line being sung lit up. When the music is paused, it shows the time, the weather and widgets.<br>
+<sub>Старый Android-планшет или телевизор показывает, что играет на компьютере: обложку, исполнителя и текст песни, где горит строка, которую сейчас поют. Когда музыка на паузе, на экране часы, погода и виджеты.</sub>
 
-[Сайт](https://nowplaylab.github.io/nowplaying-display/) &nbsp;&nbsp; [Скачать](https://github.com/nowplaylab/nowplaying-display/releases/latest) &nbsp;&nbsp; [Код](https://github.com/nowplaylab/nowplaying-display)
+[Site](https://nowplaylab.github.io/nowplaying-display/) &nbsp;&nbsp; [Download](https://github.com/nowplaylab/nowplaying-display/releases/latest) &nbsp;&nbsp; [Source](https://github.com/nowplaylab/nowplaying-display)
 
 <br>
 
