@@ -50,7 +50,8 @@ def rounded(img, r):
 
 def glow(img, draw_fn, blur, strength=1.0):
     """Мягкое свечение под значком."""
-    layer = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    # прозрачный фон того же тёплого цвета, что свечение: иначе размытие тянет к краям чёрный
+    layer = Image.new('RGBA', img.size, (255, 236, 200, 0))
     draw_fn(ImageDraw.Draw(layer))
     layer = layer.filter(ImageFilter.GaussianBlur(blur))
     if strength != 1.0:
@@ -59,7 +60,8 @@ def glow(img, draw_fn, blur, strength=1.0):
     return Image.alpha_composite(img, layer)
 
 
-X0 = 90  # левый отступ
+X0 = 90  # левый отступ значка
+Y0 = 0   # сдвиг значка вниз (для шапки рисуем с запасом, чтобы свечение не обрезалось)
 
 
 def over(img, fn):
@@ -73,7 +75,7 @@ def icon_lyrics(img):
     """Строки текста песни, горит одна, как на баннере."""
     rows = [(430, 0.22), (560, 0.4), (500, 1.0), (380, 0.4), (470, 0.22)]
     for i, (w, a) in enumerate(rows):
-        y = 110 + i * 76
+        y = Y0 + 110 + i * 76
         box = (X0, y, X0 + w, y + 46)
         if a == 1.0:
             img = glow(img, lambda d, box=box: d.rounded_rectangle(box, 23, fill=(255, 255, 255, 110)), 28)
@@ -83,7 +85,7 @@ def icon_lyrics(img):
 
 def icon_lamp(img):
     """Лампочка со свечением и волны сигнала справа."""
-    cx, cy, r = X0 + 130, 260, 115
+    cx, cy, r = X0 + 130, Y0 + 260, 115
     img = glow(img, lambda d: d.ellipse((cx - r - 70, cy - r - 70, cx + r + 70, cy + r + 70), fill=(255, 236, 200, 150)), 60)
 
     def draw(d):
@@ -99,7 +101,7 @@ def icon_lamp(img):
 
 def icon_house(img):
     """Домик с горящим окном и выключатель."""
-    x, y, w, h = X0 + 20, 250, 300, 220
+    x, y, w, h = X0 + 20, Y0 + 250, 300, 220
     wx, wy = x + w / 2, y + h / 2
     img = glow(img, lambda d: d.ellipse((wx - 115, wy - 115, wx + 115, wy + 115), fill=(255, 236, 200, 170)), 45)
 
@@ -141,8 +143,41 @@ def card(name, en, ru, icon, fn):
     out.save(os.path.join(OUT, fn), optimize=True)
 
 
+def banner(name, en, ru, pip, icon, fn):
+    """Широкая шапка для README библиотеки: значок слева, название и подписи справа."""
+    BW, BH = 2560, 760
+    img = lav_gradient(BW, BH).convert('RGBA')
+    # значок рисуем тем же кодом, что на карточке, на прозрачном холсте, и переносим крупнее
+    global X0, Y0
+    pad = 300
+    X0, Y0 = X0 + pad, Y0 + pad
+    try:
+        layer = icon(Image.new('RGBA', (W + 2 * pad, H + 2 * pad), (0, 0, 0, 0)))
+    finally:
+        X0, Y0 = X0 - pad, Y0 - pad
+    box = layer.getchannel('A').point(lambda v: 255 if v > 40 else 0).getbbox()
+    k = 470 / max(1, box[3] - box[1])
+    big = layer.resize((round(layer.width * k), round(layer.height * k)), Image.LANCZOS)
+    cx, cy = (box[0] + box[2]) / 2 * k, (box[1] + box[3]) / 2 * k
+    img.alpha_composite(big, (round(560 - cx), round(BH / 2 - cy)))
+    d = ImageDraw.Draw(img)
+    tx = 1060
+    f_name = fit(name, 150, 700, BW - tx - 160)
+    d.text((tx, 170), name, font=f_name, fill=WHITE)
+    d.text((tx, 380), en, font=font(68, 600), fill=SOFT)
+    d.text((tx, 470), ru, font=font(56, 500), fill=MUTED)
+    d.text((tx, 580), 'pip install ' + pip, font=font(48, 500), fill=MUTED)
+    rounded(img.convert('RGB'), 44).save(os.path.join(OUT, fn), optimize=True)
+
+
+LIBS = [
+    ('synced-lyrics', 'Synced song lyrics', 'Текст песни по времени', 'lrclib-synced', icon_lyrics),
+    ('yeelight-lan', 'Yeelight over LAN', 'Лампы Yeelight по сети', 'yeelight-lan', icon_lamp),
+    ('yandex-smarthome', 'Alice smart home', 'Умный дом Яндекса', 'yandex-smarthome', icon_house),
+]
+
 os.makedirs(OUT, exist_ok=True)
-card('synced-lyrics', 'Synced song lyrics', 'Текст песни по времени', icon_lyrics, 'lib-synced-lyrics.png')
-card('yeelight-lan', 'Yeelight over LAN', 'Лампы Yeelight по сети', icon_lamp, 'lib-yeelight-lan.png')
-card('yandex-smarthome', 'Alice smart home', 'Умный дом Яндекса', icon_house, 'lib-yandex-smarthome.png')
+for name, en, ru, pip, icon in LIBS:
+    card(name, en, ru, icon, f'lib-{name}.png')
+    banner(name, en, ru, pip, icon, f'lib-{name}-banner.png')
 print('ok')
